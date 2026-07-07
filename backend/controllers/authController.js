@@ -80,6 +80,9 @@ exports.login = catchAsyncErrors(async (req, res, next) => {
 
 
 // Protect Route
+console.log("req.headers.cookie:", req.headers.cookie);
+console.log("req.cookies:", req.cookies);
+console.log("origin:", req.headers.origin);
 exports.protect = catchAsyncErrors(async (req, res, next) => {
 
   let token;
