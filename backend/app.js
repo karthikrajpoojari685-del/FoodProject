@@ -12,9 +12,12 @@ const errorMiddleware = require("./middlewares/errors");
 // CORS Configuration
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      process.env.FRONTEND_URL,
+    ],
     credentials: true,
-  }),
+  })
 );
 
 // Body Parsers & Cookie handling (Consolidated to avoid duplicate parsing glitches)
