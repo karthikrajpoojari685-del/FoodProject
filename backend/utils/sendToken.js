@@ -12,7 +12,7 @@ const sendToken = (user, statusCode, res) => {
     secure: process.env.NODE_ENV === "production",
     sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
   };
-  
+
   res.cookie("jwt", token, cookieOptions);
 
   user.password = undefined;
