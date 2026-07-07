@@ -12,14 +12,10 @@ const errorMiddleware = require("./middlewares/errors");
 // CORS Configuration
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      process.env.FRONTEND_URL,
-    ],
+    origin: "https://food-project-sigma-seven.vercel.app",
     credentials: true,
   })
 );
-
 // Body Parsers & Cookie handling (Consolidated to avoid duplicate parsing glitches)
 app.use(express.json({ limit: "30kb" }));
 app.use(express.urlencoded({ extended: true, limit: "30kb" }));
