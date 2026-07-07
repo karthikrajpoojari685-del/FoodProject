@@ -24,6 +24,11 @@ export const login = (email, password) => async (dispatch) => {
       password,
     });
 
+    // Save JWT token
+    if (data.token) {
+      localStorage.setItem("token", data.token);
+    }
+
     const userPayload = data.data ? data.data.user : data.user;
 
     dispatch(loginSuccess(userPayload));
@@ -60,6 +65,11 @@ export const register = (userData) => async (dispatch) => {
         },
       }
     );
+
+    // Save JWT token
+    if (data.token) {
+      localStorage.setItem("token", data.token);
+    }
 
     const userPayload = data.data ? data.data.user : data.user;
 
@@ -117,6 +127,9 @@ export const updateProfile = (userData) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   try {
     await api.get("/v1/users/logout");
+
+    // Remove JWT token
+    localStorage.removeItem("token");
 
     dispatch(logoutSuccess());
   } catch (error) {
